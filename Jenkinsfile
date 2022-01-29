@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         NEXUS_USER         = credentials('nexus-user')
-        NEXUS_PASSWORD     = credentials('nexus-password')
+        NEXUS_PASS     = credentials('nexus-password')
     }
     parameters {
         choice(
