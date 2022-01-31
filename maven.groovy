@@ -4,11 +4,10 @@
 	ejecucion.call()
 */
 def call(){
-  stage("Paso 1: Compliar"){
+  stage("Paso 1: Compilar"){
     sh "mvn clean compile -e"
   }
   stage("Paso 2: Testear"){
-​
     sh "mvn clean test -e"
   }
   stage("Paso 3: Build .Jar"){
@@ -17,7 +16,7 @@ def call(){
   stage("Paso 4: Sonar - Análisis Estático"){
       sh "echo 'Análisis Estático!'"
       withSonarQubeEnv('sonarqube1') {
-          sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=ejemplo-maven -Dsonar.java.binaries=build'
+          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=ejemplo-maven -Dsonar.java.binaries=build"
       }
   }
   stage("Paso 5: Curl Springboot Gradle sleep 20"){
